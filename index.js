@@ -1,21 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const util = require("util");
 
-
-
-const questions = ["What is your name?", "Where are you from?"
-
-];
-
-function writeToFile(fileName, data) {
-}
-
-function init() {
-
-}
-
-init();
-
+const writeFileAsync = util.promisify(fs.writeFile);
 function promptUser() {
     return inquirer.prompt([
         {
@@ -30,7 +17,7 @@ function promptUser() {
         },
         {
             type:"input",
-            name:"Table of Contents",
+            name:"table",
             message:"Please enter the table of contents."
         },
         {
@@ -66,3 +53,44 @@ function promptUser() {
 
     ])
 }
+
+function generateReadMe(data){
+    return `
+        # ${data.title}
+
+        ## Description 
+        ${data.description}
+
+        ## Table of Contents
+        ${data.table}
+
+        ## Installation
+        ${data.installation}
+
+        ## Usage
+        ${data.usage}
+
+        ## Credits
+        ${data.contribution}
+
+        ## License
+        ${data.license}
+
+        ## Tests
+        ${data.test}
+
+        ## Questions
+        ${data.questions}
+`}
+
+promptUser()
+    .then(function(data){
+        const md = generateReadMe(data);
+        return writeFileAsync("ReadMe.md", md);
+    })
+    .then(function(){
+        console.log("Sucessfully created ReadME file.");
+    })
+    .catch(function(err){
+        console.log(err);
+    })
