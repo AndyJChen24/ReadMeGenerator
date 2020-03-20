@@ -1,10 +1,15 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
-
+const axios = require("axios")
 const writeFileAsync = util.promisify(fs.writeFile);
 function promptUser() {
     return inquirer.prompt([
+        {
+            type:"input",
+            name: "username",
+            message: "Enter your Github username"
+        },
         {
             type:"input",
             name: "title",
@@ -86,6 +91,13 @@ function generateReadMe(data){
 promptUser()
     .then(function(data){
         const md = generateReadMe(data);
+        axios.get(`https://api.github.com/users/${data.username}`, {headers: { Authorization: 'token de9d4a2f02d9a80753add2d369b69a1fe69aebca', }})
+            .then(function(response){
+                console.log(response);
+            })
+            .catch(function(err){
+                console.log(err)
+            })
         return writeFileAsync("ReadMe.md", md);
     })
     .then(function(){
@@ -94,3 +106,5 @@ promptUser()
     .catch(function(err){
         console.log(err);
     })
+
+
