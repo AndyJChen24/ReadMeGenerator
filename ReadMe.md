@@ -28,9 +28,9 @@
   
 
   ## Questions
-  *If you have any questions please visit my github*
-  AndyJChen24
-  **github: https://api.github.com/users/AndyJChen24**
-  <img src = "https://avatars2.githubusercontent.com/u/58383488?v=4" width ="150px" height="150px">
-  *email:* null
+  *If you have any questions please visit my github*  
+  AndyJChen24  
+  **github: https://api.github.com/users/AndyJChen24**  
+  <img src = "https://avatars2.githubusercontent.com/u/58383488?v=4" width ="150px" height="150px">  
+  *email:* null  
 
