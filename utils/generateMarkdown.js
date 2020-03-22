@@ -31,11 +31,11 @@ function generateMarkdown(data,user) {
   ${data.test}
 
   ## Questions
-  *If you have any questions please visit my github*
-  **${user.data.login}**
-  **github: ${user.data.url}**
-  **<img src = "${user.data.avatar_url}" width ="150px" height="150px">**
-  **email: ${user.data.email}**
+  *If you have any questions please visit my github*  
+  **${user.data.login}**  
+  **github: ${user.data.url}**  
+  **<img src = "${user.data.avatar_url}" width ="150px" height="150px">**  
+  **email: ${user.data.email}**  
 
 `;
 }
